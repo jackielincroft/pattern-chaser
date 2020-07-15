@@ -11,8 +11,8 @@ def main(args=None):
    password = "u1PGZ8ZDPbxbogPDfSWoj+Rbbtg1twYZ+UiCoFuB"
    api = 'https://api.ravelry.com' + args[0]
    r = requests.get(api, auth=(username, password)) 
-   print(type(r.json()['patterns'][0]))
-   print(r.json()['patterns'][0])
+   print(type(r.json()['patterns'][0]))   #use this and next line for query searches
+   print(r.json()['patterns'][0])          
    return 0
 
 if __name__ == '__main__':

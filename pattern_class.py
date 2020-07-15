@@ -17,12 +17,13 @@ class Pattern:
         self.weight = pat_dict['yarn_weight_description']
         self.currency = pat_dict['currency']
         self.price = pat_dict['price']
-        self.catagories = pat_dict['pattern_categories']
+        self.categories = pat_dict['pattern_categories']
         self.attributes = pat_dict['pattern_attributes']
         self.type = pat_dict['pattern_type']
         self.notes = pat_dict['notes']
         self.craft = pat_dict['craft']
         self.photos = pat_dict['photos']
         self.thumbnail = self.photos[0]['thumbnail_url']
+        self.sizes = pat_dict['pattern_needle_sizes']
         print(self.notes)
-        #print(r.json()['pattern'])
+        print(r.json()['pattern'])
