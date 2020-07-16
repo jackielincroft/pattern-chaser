@@ -2,6 +2,7 @@
 
 import requests
 import sys
+import pattern_class
 
 def search(query):
 
@@ -14,6 +15,13 @@ def search(query):
    #print(type(r.json()['patterns'][0]))   #use this and next line for query searches
    #print(r.json()['patterns'][0])          
    return r.json()
+
+craft = 'crochet'
+weight = 'cobweb'
+list_of_pats = [pattern_class.Pattern(x['id']) for x in search("/patterns/search.json?query="+craft+','+weight)['patterns']]
+print(search("/patterns/search.json?query="+craft+','+weight)['paginator'])
+for x in list_of_pats:
+    print(x.name)
 
 #if __name__ == '__main__':
  #   sys.exit(main(sys.argv[1:]))

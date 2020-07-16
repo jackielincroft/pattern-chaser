@@ -24,10 +24,11 @@ class Pattern:
         self.notes = pat_dict['notes']
         self.craft = pat_dict['craft']
         self.photos = pat_dict['photos']
-        self.thumbnail = self.photos[0]['thumbnail_url']
+        if self.photos != []:
+            self.thumbnail = self.photos[0]['thumbnail_url']
         self.sizes = pat_dict['pattern_needle_sizes']
         self.url = 'https://www.ravelry.com/patterns/library/' + self.id
-        self.down_loc = pat_dict['download_location']
+        self.likability = 0
         #print(self.notes)
         #print(r.json()['pattern'])
 

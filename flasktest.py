@@ -5,7 +5,7 @@ app = Flask(__name__, template_folder = 'html_templates')
 
 @app.route('/')
 def home():
-    pat = pattern_class.Pattern(234)
+    pat = pattern_class.Pattern(456643)
     return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name)
 
 if __name__ == '__main__':
