@@ -1,14 +1,12 @@
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, render_template, url_for
+import pattern_class
+
+app = Flask(__name__, template_folder = 'html_templates')
 
 @app.route('/')
 def home():
-    return "hello this is the home page <h1>HELLO<h1>"
-
-
-@app.route("/<name>")
-def user(name):
-    return f'Hello {name}' 
+    pat = pattern_class.Pattern(234)
+    return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name)
 
 if __name__ == '__main__':
     app.run()
