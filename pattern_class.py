@@ -14,7 +14,7 @@ class Pattern:
         pat_dict = r.json()['pattern']
         self.free = pat_dict['free']
         self.name = pat_dict['name']
-        self.downloadble = pat_dict['downloadable']
+        self.downloadable = pat_dict['downloadable']
         self.weight = pat_dict['yarn_weight_description']
         self.currency = pat_dict['currency']
         self.price = pat_dict['price']

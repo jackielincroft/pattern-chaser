@@ -16,12 +16,12 @@ def search(query):
    #print(r.json()['patterns'][0])          
    return r.json()
 
-craft = 'crochet'
-weight = 'cobweb'
-list_of_pats = [pattern_class.Pattern(x['id']) for x in search("/patterns/search.json?query="+craft+','+weight)['patterns']]
-print(search("/patterns/search.json?query="+craft+','+weight)['paginator'])
-for x in list_of_pats:
-    print(x.name)
+#craft = 'crochet'
+#weight = 'cobweb'
+#list_of_pats = [pattern_class.Pattern(x['id']) for x in search("/patterns/search.json?query="+craft+','+weight)['patterns']]
+#print(search("/patterns/search.json?query="+craft+','+weight)['paginator'])
+#for x in list_of_pats:
+ #   print(x.name)
 
 #if __name__ == '__main__':
  #   sys.exit(main(sys.argv[1:]))
