@@ -1,16 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <title>Page Title</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../static/style.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
-  <p style="text-align:center">What do you think of this pattern?</p>
+  <p class="thing">What do you think of this pattern?</p>
   <p style="text-align:center">{{name}}</p>
   <p style="text-align:center"> 
-    <a href= {{url}}>
-      <img src= {{thumbnail}} alt= {{name}}>
+    <a href={{url}}>
+      <img src= {{thumbnail}} alt={{name}}>
     </a> 
   </p>
   <p style="text-align:center">Craft: {{craft}}</p>
@@ -18,6 +19,10 @@
   <p style="text-align:center">Downloadable? {{downloadable}}</p>
   <p style="text-align:center">Price: {{price}}</p>
   <p style="text-align:center">{{notes}}</p>
+  <form action="/vote" method="POST">
+    <button type="submit" name="votebtn" value="love">Love</button>
+    <button type="submit" name="votebtn" value="hate">Hate<button>
+  </form>
 </body>
 
 </html>

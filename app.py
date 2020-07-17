@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from .pattern_class import Pattern
 import random
 
@@ -11,8 +11,18 @@ def home():
         price_text = "This pattern is free!"
     else:
         price_text = str(pat.price)+' '+pat.currency
-    return render_template("base.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+    return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
         price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+
+@app.route('/vote', methods=["POST"])
+def button_function():
+    pat = Pattern(random.randint(1,1000000))
+    if request.form.post['votebtn'] == "love":
+        return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+            price = "LALALALALA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+    elif request.form.post['votebtn'] == "hate":
+        return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+            price = "HAHAHAHAHAHA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
 
 if __name__ == '__main__':
     app.run()
