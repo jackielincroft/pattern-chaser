@@ -7,11 +7,7 @@ import query_json
 class Pattern:
     def __init__(self, id):
         self.id = str(id)
-        username = "read-c241f228d7e954631e800f3c75ca5921"
-        password = "u1PGZ8ZDPbxbogPDfSWoj+Rbbtg1twYZ+UiCoFuB"
-        api = 'https://api.ravelry.com/patterns/' + self.id + '.json'
-        r = requests.get(api, auth=(username, password)) 
-        pat_dict = r.json()['pattern']
+        pat_dict = query_json.search_pattern(id)['pattern']
         self.free = pat_dict['free']
         self.name = pat_dict['name']
         self.downloadable = pat_dict['downloadable']
