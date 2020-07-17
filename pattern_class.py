@@ -2,12 +2,12 @@
 
 import requests
 import sys
-import query_json
+from .query_json import API
 
 class Pattern:
     def __init__(self, id):
         self.id = str(id)
-        pat_dict = query_json.search_pattern(id)['pattern']
+        pat_dict = API().search_pattern(id)['pattern']
         self.free = pat_dict['free']
         self.name = pat_dict['name']
         self.downloadable = pat_dict['downloadable']
@@ -26,7 +26,6 @@ class Pattern:
         self.url = 'https://www.ravelry.com/patterns/library/' + self.id
         self.likability = 0
         #print(self.notes)
-        #print(r.json()['pattern'])
 
 
 
