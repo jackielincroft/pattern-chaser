@@ -15,7 +15,16 @@ class API:
    def search_pattern(self, id):
       r = requests.get(self.url + '/patterns/' + str(id) + '.json', auth=(self.username, self.password))
       return r.json()
+   
+   def list_of_ids(self, query):
+      pat_list = self.search(query)['patterns']
+      id_list = []
+      for x in pat_list:
+         id_list.append(x['id'])
+      return id_list
 
+x = API().list_of_ids('/patterns/search.json?availability=ravelry%2Bfree&craft=knitting&photo=yes&sort=best&page_size=1000&')
+print(len(x))
 
 #craft = 'crochet'
 #weight = 'cobweb'
