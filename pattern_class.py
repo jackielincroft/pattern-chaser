@@ -24,22 +24,21 @@ class Pattern:
             self.thumbnail = self.photos[0]['thumbnail_url']
         self.sizes = pat_dict['pattern_needle_sizes']
         self.url = 'https://www.ravelry.com/patterns/library/' + self.id
-        print(pat_dict)
         #print(self.notes)
     
     def quals(self, args = None):
         qual_dict = {}
         attribute_list = []
         for x in self.attributes:
-            attribute_list.append(x['name'])
+            attribute_list.append(x['permalink'])
         qual_dict['attributes'] = attribute_list
         if 'weight' in args:
             qual_dict['weight'] = self.weight
-        if 'category' in args:
+        if 'categories' in args:
             category_list = []
             for x in self.categories:
                 category_list.append(x['name'])
-            qual_dict['category'] = category_list
+            qual_dict['categories'] = category_list
         return qual_dict
     
 
