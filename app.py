@@ -17,12 +17,24 @@ def home():
 @app.route('/vote', methods=["POST"])
 def button_function():
     pat = Pattern(random.randint(1,1000000))
-    if request.form.post['votebtn'] == "love":
+    # if 'love' in request.form:
+    #     return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+    #          price = "LALALALALA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+    # elif 'hate' in request.form:
+    #     return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+    #          price = "HAHAHAHAHAHA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+    # else:
+    #     return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+    #          price = "oops", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+    if request.form['votebtn'] == "love":
         return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
             price = "LALALALALA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
-    elif request.form.post['votebtn'] == "hate":
+    elif request.form['votebtn'] == "hate":
         return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
             price = "HAHAHAHAHAHA", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
+    else:
+         return render_template("linked_image.html", thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+              price = "oops", craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)
 
 if __name__ == '__main__':
     app.run()
