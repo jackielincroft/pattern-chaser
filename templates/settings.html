@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Settings</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <style> .question {
+      background-color: lavender;
+  color: black;
+  border: 2px solid black;
+  margin: 20px;
+  padding: 20px;}
+  </style>
+  <p>Please answer the following questions.</p>
+</head>
+
+<body>
+<div class="question">
+<h2>What is your craft?</h2>
+<form method="post">
+    <input type="radio" id="knitting" name="craft" value="knitting">
+    <label for="knitting">Knit</label><br>
+    <input type="radio" id="crochet" name="craft" value="crochet">
+    <label for="crochet">Crochet</label><br>
+    <input type="submit" value = "Submit">
+  </form> 
+</div> 
+<div class="question">
+    <h2>What yarn weight should we look for?</h2>
+    <form method="post">
+        <input type="radio" id="thread" name="weight" value="thread">
+        <label for="thread">Thread</label><br>
+        <input type="radio" id="cobweb" name="weight" value="cobweb">
+        <label for="cobweb">Cobweb</label><br>
+        <input type="radio" id="lace" name="weight" value="lace">
+        <label for="lace">Lace</label><br>
+        <input type="radio" id="lightfingering" name="weight" value="lightfingering">
+        <label for="lightfingering">Light Fingering</label><br>
+        <input type="radio" id="fingering" name="weight" value="fingering">
+        <label for="fingering">Fingering</label><br>
+        <input type="radio" id="sport" name="weight" value="sport">
+        <label for="sport">Sport</label><br>
+        <input type="radio" id="DK" name="weight" value="DK">
+        <label for="DK">DK</label><br>
+        <input type="radio" id="worsted" name="weight" value="worsted">
+        <label for="worsted">Worsted</label><br>
+        <input type="radio" id="aran" name="weight" value="aran">
+        <label for="aran">Aran</label><br>
+        <input type="radio" id="bulky" name="weight" value="bulky">
+        <label for="bulky">Bulky</label><br>
+        <input type="radio" id="superbulky" name="weight" value="superbulky">
+        <label for="superbulky">Super Bulky</label><br>
+        <input type="radio" id="jumbo" name="weight" value="jumbo">
+        <label for="jumbo">Jumbo</label><br>
+        <input type="radio" id="useless" name="weight" value="useless">
+        <label for="useless">No Preference</label><br>
+        <input type="submit" value = "Submit">
+      </form> 
+    </div> 
+    <div class="question">
+    <h2>Would you like to restrict your search to free patterns?</h2>
+    <form method="post">
+        <input type="radio" id="yes" name="free" value="yes">
+        <label for="yes">Yes, only show me free patterns.</label><br>
+        <input type="radio" id="no" name="free" value="no">
+        <label for="no">No, show me free and paid patterns.</label><br>
+        <input type="submit" value = "Submit">
+        </form> 
+    </div> 
+    <div class="question">
+        <h2>Would you like to restrict your search to patterns available online?</h2>
+        <form method="post">
+            <input type="radio" id="yes" name="online" value="yes">
+            <label for="yes">Yes, only show me patterns available online.</label><br>
+            <input type="radio" id="no" name="online" value="no">
+            <label for="no">No, show me online and print patterns.</label><br>
+            <input type="submit" value = "Submit">
+            </form> 
+        </div> 
+</body>
+
+</html>
