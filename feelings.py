@@ -29,4 +29,6 @@ class Feelings:
                 self.prefs[x] += hl
             else:
                 self.prefs[x] = hl
+    
+  #  def create_settings():
 
