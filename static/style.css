@@ -1,19 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    margin-top: 40px;
-    text-align: center;
-}
-
 .question {
-    background-color: lavender;
+    background-color: rgb(230, 230, 250);
     color: black;
     border: 0.1rem solid black;
     padding: 1rem;
+    margin: 1rem;
 }
 
-.question-item {
+.dropdown-menu {
+    background-color: white;
+}
+
+.main-content {
+    margin: 2rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+}
+
+.resize-img {
     margin: 1rem;
+    width: 300px;
+    height: auto;
+}
+
+img.resize {
+    width: 300px;
+    height: auto; 
+}
+
+.margin-1 {
+    margin: 1rem;
+}
+
+.margin-2 {
+    margin: 20px;
 }

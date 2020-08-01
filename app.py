@@ -33,7 +33,7 @@ def generate_query(settings_dict):
 
 @app.route('/')
 def home():
-    return render_template('settings.html')
+    return render_template('preferences.html')
 
 @app.route('/vote', methods=["POST"])
 def button_function():
@@ -58,7 +58,7 @@ def button_function():
                 price_text = str(pat.price)+' '+pat.currency
         except:
             price_text = 'No price listed.'
-        return render_template("linked_image.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+        return render_template("vote.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
                 price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets)
 
 if __name__ == '__main__':
