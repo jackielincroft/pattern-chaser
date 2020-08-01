@@ -3,7 +3,7 @@
 
 <head>
   <title>Settings</title>
-  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 
 <body>
@@ -55,9 +55,9 @@
                     <option value="empty">No, show me all patterns.</option>
                     <option value="yes">Yes, show me only free patterns.</option>
                 </select>
-    </fieldset>
-    <fieldset>
-            <legend>Would you like to restrict your search to patterns available online?</legend>
+            </fieldset>
+            <fieldset class="question-item">
+                <legend>Would you like to restrict your search to patterns available online?</legend>
                 <select id="online" name="online">
                     <option value="empty">No, show me all patterns.</option>
                     <option value="yes">Yes, show me only patterns available online.</option>
@@ -73,10 +73,10 @@
                     <option value="toysandhobbies">Toys and Hobbies</option> 
                     <option value="pet%7Cpattern-component%7Cmedical">Other</option>   
                 </select>
-    </fieldset>
-    <input type="submit" value = "Submit">
-    </form> 
-</div> 
+            </fieldset>
+            <input type="submit" value = "Submit">
+        </form> 
+    </div> 
 </body>
 
 </html>
