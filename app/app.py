@@ -23,10 +23,13 @@ def button_function():
         user.update_prefs(Pattern(request.form['id']), hl)
     finally:
         pat = Pattern(random.randint(1,1000000))
-        if pat.free == True:
-            price_text = "This pattern is free!"
-        else:
-            price_text = str(pat.price)+' '+pat.currency
+        try:
+            if pat.free == True:
+                price_text = "This pattern is free!"
+            else:
+                price_text = str(pat.price)+' '+pat.currency
+        except:
+            price_text = 'No price listed.'
         return render_template("linked_image.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
                 price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, feels = user.prefs)
 
