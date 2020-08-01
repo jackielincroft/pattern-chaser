@@ -1,4 +1,4 @@
-from .pattern_class import Pattern
+from pattern_class import Pattern
 
 important_things = ['categories', 'weight']
 
