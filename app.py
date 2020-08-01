@@ -6,6 +6,29 @@ import random
 app = Flask(__name__, template_folder = 'templates')
 important_things = ['categories', 'weight']
 user = Feelings()
+setting_options = ['craft','weight', 'yardage', 'free', 'online', 'pc']
+other_settings = ['weight','yardage','pc']
+
+def settings():
+    user_settings_dict = {}
+    for x in setting_options:
+        if request.form[x] != 'empty':
+            user_settings_dict[x] = request.form[x]
+    return user_settings_dict
+def generate_query(settings_dict):
+    query = 'craft='+request.form['craft']
+    if 'free' in settings_dict.keys():
+        if 'online' in settings_dict.keys():
+            query = query + '&availability=free%7Conline%7Cravelry%2B-discontinued'
+        else:
+            query = query + '&availability=free%2B-discontinued'
+    else:
+        query = query + 'availability=&%2B-discontinued'
+    for x in other_settings:
+        if x in settings_dict.keys():
+            query = query + '&' + x +'='+ request.form[x]
+    return query
+
 
 @app.route('/')
 def home():
@@ -31,7 +54,7 @@ def button_function():
         except:
             price_text = 'No price listed.'
         return render_template("linked_image.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
-                price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, feels = user.prefs)
+                price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, feels = generate_query(settings()))
 
 if __name__ == '__main__':
     app.run()

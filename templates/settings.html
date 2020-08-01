@@ -8,18 +8,15 @@
 
 <body>
 <div class="question">
-<h2>What is your craft?</h2>
-<form method="post">
-    <input type="radio" name="craft" value="knitting">
-    <label for="knitting">Knit</label><br>
-    <input type="radio"  name="craft" value="crochet">
-    <label for="crochet">Crochet</label><br>
-    <input type="submit" value = "Submit">
-  </form> 
-</div> 
-<div class="question">
     <h2>Please answer the following questions.</h2>
     <form method="post" action='/vote'>
+    <fieldset>
+        <legend>What is your craft?</legend>
+            <select id = 'craft' name = 'craft'>
+                <option value = 'knitting'>Knitting</option>
+                <option value = 'crochet'>Crochet</option>
+            </select>
+    </fieldset>
     <fieldset>
         <legend>Are you looking for projects using a specific weight?</legend>
             <select id="weight" name="weight">   
@@ -40,16 +37,16 @@
     </fieldset>    
     <fieldset>
         <legend>Do you have a preferred yardage?</legend>
-            <select id="yardage" name="yardage">
+            <select id="yardage-in" name="yardage">
                 <option value="empty">No preference</option>
-                <option value="0-300">0-300</option>
-                <option value="300-600">300-600</option>
-                <option value="600-900">600-900</option>
+                <option value="0-150%7C150-300">0-300</option>
+                <option value="300-450%7C450-600">300-600</option>
+                <option value="600-750%7C750-900">600-900</option>
                 <option value="900-1200">900-1200</option>
                 <option value="1200-1500">1200-1500</option>
                 <option value="1500-1800">1500-1800</option>
                 <option value="1800-2100">1800-2100</option>
-                <option value="2100+">2100+</option>
+                <option value="2100-">2100+</option>
             </select>
     </fieldset>
     <fieldset>
@@ -68,10 +65,10 @@
     </fieldset>
     <fieldset>
             <legend>Would you like to restrict your search a certain category?</legend>
-                <select id="category" name="free">
+                <select id="pc" name="pc">
                     <option value="empty">No preference</option>
                     <option value="clothing">Clothing</option>
-                    <option value="Accessories">Accessories</option>
+                    <option value="accessories">Accessories</option>
                     <option value="home">Home</option>
                     <option value="toysandhobbies">Toys and Hobbies</option> 
                     <option value="pet%7Cpattern-component%7Cmedical">Other</option>   
