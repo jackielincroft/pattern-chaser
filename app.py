@@ -3,7 +3,7 @@ from pattern_class import Pattern
 from feelings import Feelings
 import random
 
-app = Flask(__name__, template_folder = '../templates')
+app = Flask(__name__, template_folder = 'templates')
 important_things = ['categories', 'weight']
 user = Feelings()
 
