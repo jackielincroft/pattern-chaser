@@ -77,6 +77,11 @@ def button_function():
             price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets, 
             action = next_page, feels=user.prefs)
 
+@app.route('/results')
+def results():
+    return render_template(results.html)
+
+
 if __name__ == '__main__':
     app.run()
 
