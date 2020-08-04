@@ -39,6 +39,9 @@ def home():
 @app.route('/vote', methods=["POST"])
 def button_function():
     next_page = '/vote'
+    user.update_counter() 
+    if user.vote_counter==19:
+        next_page = '/results'
     try:
         if request.form['votebtn'] == "love":
             hl = 1
@@ -46,10 +49,7 @@ def button_function():
             hl = -1
         else:
             hl = 0
-        user.update_prefs(Pattern(request.form['id']), hl)
-        user.vote_counter += 1
-        if user.vote_counter==3:
-            next_page = '/results'
+        user.update_prefs(Pattern(request.form['id']), hl)  
     except:
         pass
     try:

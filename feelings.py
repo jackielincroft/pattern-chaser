@@ -24,4 +24,7 @@ class Feelings:
         else:
             self.prefs[x] = hl
     
+    def update_counter(self):
+        self.vote_counter += 1
+    
 
