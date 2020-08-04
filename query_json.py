@@ -23,8 +23,12 @@ class API:
          id_list.append(x['id'])
       return id_list
 
-x = API().list_of_ids('/patterns/search.json?availability=ravelry%2Bfree&craft=knitting&photo=yes&sort=best&page_size=1000&')
-print(len(x))
+   def num_pages(self, query):
+      paginatory = self.search(query)['paginator']
+      return paginatory['page_count']
+
+x = API().num_pages('/patterns/search.json?availability=ravelry%2Bfree&craft=knitting&photo=yes&sort=best&page_size=1000')
+print(x)
 
 #craft = 'crochet'
 #weight = 'cobweb'
