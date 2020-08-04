@@ -26,19 +26,19 @@ class Pattern:
         self.url = 'https://www.ravelry.com/patterns/library/' + self.id
         #print(self.notes)
     
-    def quals(self, args = None):
+    def quals(self):
+        '''returns a dictionary of the qualities we care about for a given pattern of the form
+        {attributes: list_of_attributes, weight: weight, category: list_of_categories}'''
         qual_dict = {}
         attribute_list = []
+        category_list = []
         for x in self.attributes:
             attribute_list.append(x['permalink'])
         qual_dict['attributes'] = attribute_list
-        if 'weight' in args:
-            qual_dict['weight'] = self.weight
-        if 'categories' in args:
-            category_list = []
-            for x in self.categories:
-                category_list.append(x['name'])
-            qual_dict['categories'] = category_list
+        qual_dict['weight'] = self.weight
+        for x in self.categories:
+            category_list.append(x['name'])
+        qual_dict['categories'] = category_list
         return qual_dict
     
 
