@@ -38,6 +38,7 @@ def home():
 
 @app.route('/vote', methods=["POST"])
 def button_function():
+    next_page = '/vote'
     try:
         if request.form['votebtn'] == "love":
             hl = 1
@@ -46,22 +47,26 @@ def button_function():
         else:
             hl = 0
         user.update_prefs(Pattern(request.form['id']), hl)
-    finally:
-        try:
-            user_presets=generate_query(settings())
-        except: 
-            user_presets=request.form['user_presets']
-        pat = Pattern(random.choice(API().list_of_ids(user_presets)))
-        print('length is'+str(len(API().list_of_ids(user_presets))))
-        try:
-            if pat.free == True:
-                price_text = "This pattern is free!"
-            else:
-                price_text = str(pat.price)+' '+pat.currency
-        except:
-            price_text = 'No price listed.'
-        return render_template("vote.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
-                price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets)
+        user.vote_counter += 1
+        if user.vote_counter==3:
+            next_page = '/results'
+    except:
+        pass
+    try:
+        user_presets=generate_query(settings())
+    except: 
+        user_presets=request.form['user_presets']
+    pat = Pattern(random.choice(API().list_of_ids(user_presets)))
+    print('length is'+str(len(API().list_of_ids(user_presets))))
+    try:
+        if pat.free == True:
+            price_text = "This pattern is free!"
+        else:
+            price_text = str(pat.price)+' '+pat.currency
+    except:
+        price_text = 'No price listed.'
+    return render_template("vote.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
+            price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets, action = next_page)
 
 if __name__ == '__main__':
     app.run()

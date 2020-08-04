@@ -6,6 +6,7 @@ class Feelings:
     def __init__(self):
         self.settings = []
         self.prefs = {}
+        self.vote_counter = 0
 
     def update_prefs(self, Pattern, hl):
         pattern_qualities = Pattern.quals()
