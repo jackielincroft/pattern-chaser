@@ -28,6 +28,7 @@ def generate_query(settings_dict):
     for x in other_settings:
         if x in settings_dict.keys():
             query = query + '&' + x +'='+ request.form[x]
+    query = query + '&page_size=1000'
     return query
 
 
@@ -51,6 +52,7 @@ def button_function():
         except: 
             user_presets=request.form['user_presets']
         pat = Pattern(random.choice(API().list_of_ids(user_presets)))
+        print('length is'+str(len(API().list_of_ids(user_presets))))
         try:
             if pat.free == True:
                 price_text = "This pattern is free!"
