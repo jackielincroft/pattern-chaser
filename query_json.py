@@ -24,8 +24,8 @@ class API:
       return id_list
 
    def num_pages(self, query):
-      paginatory = self.search(query)['paginator']
-      return paginatory['page_count']
+      paginator = self.search(query)['paginator']
+      return paginator['page_count']
 
 x = API().num_pages('/patterns/search.json?availability=ravelry%2Bfree&craft=knitting&photo=yes&sort=best&page_size=1000')
 print(x)
