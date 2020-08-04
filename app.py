@@ -28,7 +28,7 @@ def generate_query(settings_dict):
     for x in other_settings:
         if x in settings_dict.keys():
             query = query + '&' + x +'='+ request.form[x]
-    query = query + '&page_size=1000'
+    query = query + '&page_size=100'
     return query
 
 
