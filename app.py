@@ -9,6 +9,7 @@ important_things = ['categories', 'weight']
 user = Feelings()
 setting_options = ['craft','weight', 'yardage', 'free', 'online', 'pc']
 other_settings = ['weight','yardage','pc']
+NUM_VOTES = 3
 
 def settings():
     user_settings_dict = {}
@@ -34,39 +35,47 @@ def generate_query(settings_dict):
 
 @app.route('/')
 def home():
+    user.vote_counter = 0
     return render_template('preferences.html')
 
 @app.route('/vote', methods=["POST"])
 def button_function():
-    next_page = '/vote'
-    user.update_counter() 
-    if user.vote_counter==19:
-        next_page = '/results'
-    try:
+    user.update_counter()
+    print(user.vote_counter)
+
+    # initial case: user has not voted yet
+    if user.vote_counter <= 1:
+        next_page = '/vote'
+        user_presets=generate_query(settings())
+    # general case: continue voting
+    elif user.vote_counter >= 2 and user.vote_counter < NUM_VOTES + 1:
         if request.form['votebtn'] == "love":
             hl = 1
         elif request.form['votebtn'] == "hate":
             hl = -1
         else:
             hl = 0
-        user.update_prefs(Pattern(request.form['id']), hl)  
-    except:
-        pass
-    try:
-        user_presets=generate_query(settings())
-    except: 
+        user.update_prefs(Pattern(request.form['id']), hl)
+        next_page = '/vote'
         user_presets=request.form['user_presets']
+    # final case: go to results page
+    elif user.vote_counter >= NUM_VOTES + 1:
+        next_page = '/results'
+        user_presets=request.form['user_presets']
+    
+    # get pattern and figure out price
     pat = Pattern(random.choice(API().list_of_ids(user_presets)))
-    print('length is'+str(len(API().list_of_ids(user_presets))))
-    try:
-        if pat.free == True:
-            price_text = "This pattern is free!"
-        else:
+    if pat.free == True:
+        price_text = "This pattern is free!"
+    else:
+        try:
             price_text = str(pat.price)+' '+pat.currency
-    except:
-        price_text = 'No price listed.'
+        except:
+            price_text = 'No price listed.'
+
     return render_template("vote.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
-            price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets, action = next_page)
+            price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets, 
+            action = next_page, feels=user.prefs)
 
 if __name__ == '__main__':
     app.run()
