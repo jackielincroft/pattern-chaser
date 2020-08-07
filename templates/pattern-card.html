@@ -1,0 +1,20 @@
+{% macro card(pattern) %}
+<div class="card bg-light mb-3">
+    <h2 class="card-header">{{pattern.name}}</h2>
+    <div class="card-body flex-row">
+    <div class="flex-column">
+        <a class="resize-img" href={{pattern.url}} target="_blank">
+            <img class="resize" src= {{pattern.thumbnail}} alt={{pattern.name}}>
+        </a>
+    </div>
+    <div class="flex-column margin-1">
+        <p>Craft: {{pattern.craft.name}}</p>
+        <p>Yarn Weight: {{pattern.weight}}</p>
+        <p>Downloadable? {{pattern.downloadable}}</p>
+        <p>Price: {{pattern.price}}</p>
+        <small>{{pattern.notes}}</small>
+        <p>{{feels}}</p>
+    </div>
+    </div>
+</div>
+{% endmacro %}

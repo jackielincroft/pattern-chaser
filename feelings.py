@@ -27,5 +27,3 @@ class Feelings:
     def update_counter(self):
         self.vote_counter += 1
 
-    def results(self):    
-

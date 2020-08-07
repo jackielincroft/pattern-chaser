@@ -35,7 +35,7 @@ def generate_query(settings_dict):
 
 @app.route('/')
 def home():
-    user.vote_counter = 0
+    user = Feelings()
     return render_template('preferences.html')
 
 @app.route('/vote', methods=["POST"])
@@ -73,13 +73,20 @@ def button_function():
         except:
             price_text = 'No price listed.'
 
-    return render_template("vote.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
-            price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable, user_presets = user_presets, 
-            action = next_page, feels=user.prefs)
+    return render_template("vote.html", pattern=pat, 
+            user_presets = user_presets, action = next_page, feels=user.prefs)
 
-@app.route('/results')
+@app.route('/results', methods=["POST"])
 def results():
-    return render_template(results.html)
+    # TODO: change placeholder code once we actually have an algorithm to determine recommended patterns
+    pats = []
+    pat1 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
+    pat2 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
+    pat3 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
+    pats.append(pat1)
+    pats.append(pat2)
+    pats.append(pat3)
+    return render_template("results.html", patterns=pats)
 
 
 if __name__ == '__main__':

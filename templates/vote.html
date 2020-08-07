@@ -5,35 +5,20 @@
   <title>Voting</title>
   <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../static/style.css">
+  {% from 'pattern-card.html' import card %}
 </head>
 
 <body>
   <div class="main-content">
     <h1 class="display-5">What do you think of this pattern?</h1>
-    <div class="card bg-light mb-3">
-      <h2 class="card-header">{{name}}</h2>
-      <div class="card-body flex-row">
-        <div class="flex-column">
-          <a class="resize-img" href={{url}} target="_blank">
-              <img class="resize" src= {{thumbnail}} alt={{name}}>
-          </a>
-        </div>
-        <div class="flex-column margin-1">
-          <p>Craft: {{craft}}</p>
-          <p>Yarn Weight: {{weight}}</p>
-          <p>Downloadable? {{downloadable}}</p>
-          <p>Price: {{price}}</p>
-          <small>{{notes}}</small>
-          <p>{{feels}}</p>
-        </div>
-      </div>
-    </div>
+    {{ card(pattern) }}
+    <p>{{feels}}</p>
     <form action={{action}} method=POST style="text-align:center">
       <input class="btn btn-primary btn-lg margin-2"
             type="submit" name="votebtn" value="love"></input>
       <input class="btn btn-secondary btn-lg margin-2" 
             type="submit" name="votebtn" value="hate"></input>
-      <input type='hidden' name='id' value={{id_num}}></input>
+      <input type='hidden' name='id' value={{pattern.id}}></input>
       <input type='hidden' name='user_presets' value={{user_presets}}></input>
     </form>
   </div>
