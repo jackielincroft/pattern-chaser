@@ -41,9 +41,13 @@ class Pattern:
         qual_dict['categories'] = category_list
         return qual_dict
 
-    def likeability_score(self, feelings_dict):
-        return
-    
-
-
-
+    def likeability_score(self, feels_dict):
+        quals = self.quals()
+        hearts_score = 0
+        for umbrella in ['attributes', 'categories']:
+            for smol in quals[umbrella]:
+                if smol in feels_dict[umbrella].keys():
+                    hearts_score += feels_dict[umbrella][smol]
+        if quals['weight'] in feels_dict['weights']:
+            hearts_score += feels_dict['weights'][quals['weight']]
+        return hearts_score

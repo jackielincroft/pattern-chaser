@@ -34,10 +34,11 @@ class Feelings:
 
     def scale_prefs(self):
         for weight in self.prefs['weights'].keys():
-            self.prefs['weight'][weight] = mega_scaling_dict['weight']self.prefs[qual]
+            self.prefs['weights'][weight] = mega_scaling_dict['weight'] * self.prefs['weights'][weight]
         for umbrella in ['attributes', 'categories']:
             for qual in self.prefs[umbrella].keys():
                 if qual in mega_scaling_dict.keys():
                     self.prefs[umbrella][qual] = mega_scaling_dict[qual] * self.prefs[umbrella][qual]
                 else:
-                    self.prefs[umbrella].pop(qual, None)
+                    self.prefs[umbrella][qual] = 0
+                    #self.prefs[umbrella].pop(qual)

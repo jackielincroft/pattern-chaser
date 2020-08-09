@@ -41,7 +41,6 @@ def home():
 @app.route('/vote', methods=["POST"])
 def button_function():
     user.update_counter()
-    print(user.vote_counter)
 
     # initial case: user has not voted yet
     if user.vote_counter <= 1:
@@ -87,7 +86,8 @@ def results():
     pats.append(pat2)
     pats.append(pat3)
     user.scale_prefs()
-    print(user.prefs())
+    print(pat1.likeability_score(user.prefs))
+    #print(user.prefs)
     return render_template("results.html", patterns=pats)
 
 
