@@ -1,15 +1,22 @@
 from flask import Flask, render_template, url_for, request
-from pattern_class import Pattern
+from pattern import Pattern
 from feelings import Feelings
-from query_json import API
+from api import API
 import random
 
 app = Flask(__name__, template_folder = 'templates')
-important_things = ['categories', 'weight']
+
+# Global Variables: -------------------------------------------------
 user = Feelings()
 setting_options = ['craft','weight', 'yardage', 'free', 'online', 'pc']
 other_settings = ['weight','yardage','pc']
 NUM_VOTES = 3
+
+# Home Page: --------------------------------------------------------
+@app.route('/')
+def home():
+    user = Feelings()
+    return render_template('preferences.html')
 
 def settings():
     user_settings_dict = {}
@@ -32,12 +39,7 @@ def generate_query(settings_dict):
     query = query + '&page_size=100'
     return query
 
-
-@app.route('/')
-def home():
-    user = Feelings()
-    return render_template('preferences.html')
-
+# Voting Page: ------------------------------------------------------
 @app.route('/vote', methods=["POST"])
 def button_function():
     user.update_counter()
@@ -75,6 +77,7 @@ def button_function():
     return render_template("vote.html", pattern=pat, 
             user_presets = user_presets, action = next_page, feels=user.prefs)
 
+# Results Page: -----------------------------------------------------
 @app.route('/results', methods=["POST"])
 def results():
     # TODO: change placeholder code once we actually have an algorithm to determine recommended patterns
@@ -93,12 +96,3 @@ def results():
 
 if __name__ == '__main__':
     app.run()
-
-#emergency code
-'''pat = Pattern(random.randint(1,1000000))
-if pat.free == True:
-    price_text = "This pattern is free!"
-else:
-    price_text = str(pat.price)+' '+pat.currency
-return render_template("linked_image.html", id_num = int(pat.id), thumbnail = pat.thumbnail, url = pat.url, name = pat.name, notes = pat.notes, 
-    price = price_text, craft = pat.craft['name'], weight = pat.weight, downloadable = pat.downloadable)'''

@@ -1,4 +1,4 @@
-from pattern_class import Pattern
+from pattern import Pattern
 
 important_things = ['categories', 'weight']
 mega_scaling_dict = {'weight': 0.4, }

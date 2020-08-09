@@ -2,7 +2,7 @@
 
 import requests
 import sys
-from query_json import API
+from api import API
 
 class Pattern:
     def __init__(self, id):
