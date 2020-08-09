@@ -1,6 +1,5 @@
 from pattern import Pattern
 
-important_things = ['categories', 'weight']
 mega_scaling_dict = {'weight': 0.4, }
 
 class Feelings:
@@ -9,8 +8,8 @@ class Feelings:
         self.prefs = {'attributes': {}, 'categories': {}, 'weights': {}}
         self.vote_counter = 0
 
-    def update_prefs(self, Pattern, hl):
-        pattern_qualities = Pattern.quals()
+    def update_prefs(self, pattern, hl):
+        pattern_qualities = pattern.quals()
         attributes = pattern_qualities['attributes']
         categories = pattern_qualities['categories']
         weight = pattern_qualities['weight']

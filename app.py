@@ -49,7 +49,7 @@ def button_function():
         next_page = '/vote'
         user_presets=generate_query(settings())
     # general case: continue voting
-    elif user.vote_counter >= 2 and user.vote_counter < NUM_VOTES + 1:
+    elif user.vote_counter >= 2 and user.vote_counter < NUM_VOTES:
         if request.form['votebtn'] == "love":
             hl = 1
         elif request.form['votebtn'] == "hate":
@@ -60,7 +60,7 @@ def button_function():
         next_page = '/vote'
         user_presets=request.form['user_presets']
     # final case: go to results page
-    elif user.vote_counter >= NUM_VOTES + 1:
+    elif user.vote_counter >= NUM_VOTES:
         next_page = '/results'
         user_presets=request.form['user_presets']
     
@@ -81,16 +81,17 @@ def button_function():
 @app.route('/results', methods=["POST"])
 def results():
     # TODO: change placeholder code once we actually have an algorithm to determine recommended patterns
-    pats = []
+    # pats is a dictionary, where the keys are patterns and the values are likeability scores
+    pats = {}
     pat1 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
     pat2 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
     pat3 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
-    pats.append(pat1)
-    pats.append(pat2)
-    pats.append(pat3)
+    
     user.scale_prefs()
-    print(pat1.likeability_score(user.prefs))
-    #print(user.prefs)
+    pats[pat1] = pat1.likeability_score(user.prefs)
+    pats[pat2] = pat2.likeability_score(user.prefs)
+    pats[pat3] = pat3.likeability_score(user.prefs)
+
     return render_template("results.html", patterns=pats)
 
 

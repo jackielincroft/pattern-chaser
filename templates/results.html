@@ -11,8 +11,10 @@
 <body>
   <div class="main-content">
     <h1 class="display-5">Your Recommended Patterns</h1>
-    {%for i in range(0, patterns|length)%} 
-        {{ card(patterns[i]) }}
+    {% for pattern, score in patterns.items() %} 
+        {{ card(pattern) }}
+        <!-- delete score later -->
+        <p>likeability score: {{ score }}</p>
     {%endfor%}
   </div>
 </body>
