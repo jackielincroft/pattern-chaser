@@ -21,7 +21,7 @@ class Pattern:
         self.craft = pat_dict['craft']
         self.photos = pat_dict['photos']
         if self.photos != []:
-            self.thumbnail = self.photos[0]['thumbnail_url']
+            self.thumbnail = self.photos[0]['medium_url']
         self.sizes = pat_dict['pattern_needle_sizes']
         self.url = 'https://www.ravelry.com/patterns/library/' + self.id
         #print(self.notes)
