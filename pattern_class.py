@@ -40,6 +40,9 @@ class Pattern:
             category_list.append(x['name'])
         qual_dict['categories'] = category_list
         return qual_dict
+
+    def likeability_score(self, feelings_dict):
+        return
     
 
 

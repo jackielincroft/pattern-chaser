@@ -86,6 +86,8 @@ def results():
     pats.append(pat1)
     pats.append(pat2)
     pats.append(pat3)
+    user.scale_prefs()
+    print(user.prefs())
     return render_template("results.html", patterns=pats)
 
 
