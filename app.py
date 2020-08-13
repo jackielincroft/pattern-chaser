@@ -4,7 +4,7 @@ from feelings import Feelings
 from api import API
 import random
 
-application = Flask(__name__, template_folder = 'templates')
+app = Flask(__name__, template_folder = 'templates')
 
 # Global Variables: -------------------------------------------------
 user = Feelings()
@@ -13,7 +13,7 @@ other_settings = ['weight','yardage','pc']
 NUM_VOTES = 3
 
 # Home Page: --------------------------------------------------------
-@application.route('/')
+@app.route('/')
 def home():
     user = Feelings()
     return render_template('preferences.html')
@@ -40,7 +40,7 @@ def generate_query(settings_dict):
     return query
 
 # Voting Page: ------------------------------------------------------
-@application.route('/vote', methods=["POST"])
+@app.route('/vote', methods=["POST"])
 def button_function():
     user.update_counter()
 
@@ -78,7 +78,7 @@ def button_function():
             user_presets = user_presets, action = next_page, feels=user.prefs)
 
 # Results Page: -----------------------------------------------------
-@application.route('/results', methods=["POST"])
+@app.route('/results', methods=["POST"])
 def results():
     # TODO: change placeholder code once we actually have an algorithm to determine recommended patterns
     # pats is a dictionary, where the keys are patterns and the values are likeability scores
@@ -96,4 +96,4 @@ def results():
 
 
 if __name__ == '__main__':
-    application.run()
+    app.run()
