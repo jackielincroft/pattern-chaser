@@ -40,11 +40,3 @@ class API:
       return id_list
 
 x = API().list_of_ids_random_pg('/patterns/search.json?availability=ravelry%2Bfree&craft=knitting&photo=yes&sort=best&page_size=100')
-# print(x)
-
-#craft = 'crochet'
-#weight = 'cobweb'
-#list_of_pats = [pattern_class.Pattern(x['id']) for x in search("/patterns/search.json?query="+craft+','+weight)['patterns']]
-#print(search("/patterns/search.json?query="+craft+','+weight)['paginator'])
-#for x in list_of_pats:
- #   print(x.name)

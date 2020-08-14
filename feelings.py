@@ -7,6 +7,7 @@ class Feelings:
         self.settings = []
         self.prefs = {'attributes': {}, 'categories': {}, 'weights': {}}
         self.vote_counter = 0
+        self.presets_query = '/patterns/search.json'
 
     def update_prefs(self, pattern, hl):
         pattern_qualities = pattern.quals()
@@ -27,17 +28,17 @@ class Feelings:
             self.prefs['weights'][weight] += hl
         else:
             self.prefs['weights'][weight] = hl
-    
-    def update_counter(self):
-        self.vote_counter += 1
 
     def scale_prefs(self):
-        for weight in self.prefs['weights'].keys():
-            self.prefs['weights'][weight] = mega_scaling_dict['weight'] * self.prefs['weights'][weight]
+        copy_prefs = self.prefs
+        for weight in copy_prefs['weights'].keys():
+            copy_prefs['weights'][weight] = mega_scaling_dict['weight'] * copy_prefs['weights'][weight]
         for umbrella in ['attributes', 'categories']:
-            for qual in self.prefs[umbrella].keys():
+            for qual in copy_prefs[umbrella].keys():
                 if qual in mega_scaling_dict.keys():
-                    self.prefs[umbrella][qual] = mega_scaling_dict[qual] * self.prefs[umbrella][qual]
+                    copy_prefs[umbrella][qual] = mega_scaling_dict[qual] * copy_prefs[umbrella][qual]
                 else:
-                    self.prefs[umbrella][qual] = 0
-                    #self.prefs[umbrella].pop(qual)
+                    # TODO: once mega scaling dict is complete, replace this (for now, just weight everything 0.2)
+                    # copy_prefs[umbrella][qual] = 0
+                    copy_prefs[umbrella][qual] = 0.2 * copy_prefs[umbrella][qual]
+        return copy_prefs
