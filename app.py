@@ -3,7 +3,6 @@ from pattern import Pattern
 from feelings import Feelings
 from api import API
 import random
-import numpy
 
 app = Flask(__name__, template_folder = 'templates')
 
@@ -16,10 +15,7 @@ NUM_VOTES = 5
 # Home Page: --------------------------------------------------------
 @app.route('/')
 def home():
-    # Initialize feelings to be neutral and votes counted to be zero
     user = Feelings()
-    #user.vote_counter = 0
-    #user.prefs = {'attributes': {}, 'categories': {}, 'weights': {}}
     return render_template('preferences.html')
 
 # Functions used to generate an API query based on user preferences
@@ -82,7 +78,6 @@ def vote():
 # Results Page: -----------------------------------------------------
 @app.route('/results', methods=["POST"])
 def results():
-    # TODO: change placeholder code once we actually have an algorithm to determine recommended patterns
     # best_pats is a dictionary, where the keys are patterns and the values are likeability scores
     best_pats = {}
     
@@ -101,24 +96,14 @@ def results():
         # after first 5, only replace patterns with better ones (higher scores)
         else:
             least_best = min(best_pats.items(), key=lambda x: x[1])
-            # numpy.min(list(best_pats.values()))
             if score > least_best[1]:
-                #best_pats.pop(numpy.min(list(best_pats.values()))) # remove the fifth best
                 best_pats.pop(least_best[0])
                 best_pats[pat] = score # add this pattern and its score
-            
-    '''
-    pat1 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
-    pat2 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
-    pat3 = Pattern(random.choice(API().list_of_ids('/patterns/search.json?craft=knitting&photo=yes')))
-    
-    user.scale_prefs()
-    pats[pat1] = pat1.likeability_score(user.prefs)
-    pats[pat2] = pat2.likeability_score(user.prefs)
-    pats[pat3] = pat3.likeability_score(user.prefs)
-    '''
 
-    return render_template("results.html", patterns=best_pats)
+        # sort final top five
+        best_pats_sorted = dict(sorted(best_pats.items(), key=lambda x: x[1], reverse=True))
+ 
+    return render_template("results.html", patterns=best_pats_sorted)
 
 
 if __name__ == '__main__':
