@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+    Pattern Chaser
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="h1" style="text-align:center">Welcome to Pattern Chaser!</div>
+    <p><em>Pattern Chaser is a website to help knitters and crocheters find new patterns they'll love, using a combination of randomization and machine learning preferences.</em></p>
+    <div class='card'>
+        <div class="card-header">
+            How to Use Pattern Chaser
+        </div>
+        <div class="card-body">
+        <ol>
+            <li class="text-secondary lead">Set your preferences for what kind of patterns you're open to – your preferred craft, yarn weight, yardage, etc.  You can make as many or as few restrictions as you'd like, although we recommend restricting 2-3 things.</li>
+            <li class="text-warning lead">Next, you'll be shown a series of random patterns that fit your preferrences.  For each pattern, vote on whether or not you like the pattern.  This data is what our algorithm will use to find your perfect pattern recommendations!</li>
+            <li class="text-info lead">Finally, wait for a moment while we find you a set of patterns that we think you'll love!  Each pattern will be linked to it's corresponding Ravelry page for more information.  Feel free to refresh to get additional recommended results!</li>
+        </ol>
+    </div>
+    </div>
+    <input class="btn btn-primary btn-lg btn-block" style="margin-top:2rem" type="submit" value="Find Patterns!">
+</div>
+{% endblock %}

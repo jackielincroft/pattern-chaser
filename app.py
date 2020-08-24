@@ -15,8 +15,13 @@ NUM_VOTES = 5
 # Home Page: --------------------------------------------------------
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+# Preferences Page: -------------------------------------------------
+@app.route('/preferences')
+def preferences():
     user = Feelings()
-    return render_template('preferences.html')
+    return render_template('preferences_child.html')
 
 # Functions used to generate an API query based on user preferences
 def settings():
@@ -39,6 +44,7 @@ def generate_query(settings_dict):
             query = query + '&' + x +'='+ request.form[x]
     query = query + '&page_size=100'
     return query
+
 
 # Voting Page: ------------------------------------------------------
 @app.route('/vote', methods=["POST"])
@@ -73,7 +79,7 @@ def vote():
         except:
             price_text = 'No price listed.'
 
-    return render_template("vote.html", pattern=pat, action=next_page, feels=user.prefs)
+    return render_template("vote_child.html", pattern=pat, action=next_page, feels=user.prefs)
 
 # Results Page: -----------------------------------------------------
 @app.route('/results', methods=["POST"])

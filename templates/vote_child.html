@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from 'pattern-card.html' import card %}
+
+{% block title %}
+    Vote
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1 class="display-5">What do you think of this pattern?</h1>
+    {{ card(pattern) }}
+    <p>{{feels}}</p>
+    <form action={{action}} method=POST style="text-align:center">
+        <input class="btn btn-primary btn-lg margin-2"
+            type="submit" name="votebtn" value="love"></input>
+        <input class="btn btn-secondary btn-lg margin-2" 
+            type="submit" name="votebtn" value="hate"></input>
+        <input type='hidden' name='id' value={{pattern.id}}></input>
+    </form>
+</div>
+{% endblock %}
