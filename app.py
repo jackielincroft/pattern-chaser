@@ -109,7 +109,7 @@ def results():
         # sort final top five
         best_pats_sorted = dict(sorted(best_pats.items(), key=lambda x: x[1], reverse=True))
  
-    return render_template("results.html", patterns=best_pats_sorted)
+    return render_template("results_child.html", patterns=best_pats_sorted)
 
 
 if __name__ == '__main__':

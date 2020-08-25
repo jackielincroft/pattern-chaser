@@ -9,14 +9,14 @@
         <h1 class="display-3">Preferences</h1>
         <form method=POST action='/vote'>
             <fieldset class="form-group">
-                <legend>What is your craft?</legend>
+                <legend>What is your <strong>craft</strong>?</legend>
                 <select class="form-control" id='craft' name='craft'>
                         <option value = 'knitting'>Knitting</option>
                         <option value = 'crochet'>Crochet</option>
                 </select>
             </fieldset>
             <fieldset class="form-group">
-                <legend>Are you looking for projects using a specific weight?</legend>
+                <legend>Are you looking for projects using a specific <strong>yarn weight</strong>?</legend>
                 <select class='form-control' id="weight" name="weight">   
                     <option value="empty">No preference</option>
                     <option value="thread">Thread</option>
@@ -34,7 +34,7 @@
                 </select>
             </fieldset>    
             <fieldset class="form-group">
-                <legend>Do you have a preferred yardage?</legend>
+                <legend>Do you have a preferred <strong>yardage</strong>?</legend>
                 <select class='form-control' id="yardage-in" name="yardage">
                     <option value="empty">No preference</option>
                     <option value="0-150%7C150-300">0-300</option>
@@ -48,21 +48,21 @@
                 </select>
             </fieldset>
             <fieldset class="form-group">
-                <legend>Would you like to restrict your search to free patterns?</legend>
+                <legend>Would you like to restrict your search to <strong>free</strong> patterns?</legend>
                 <select class='form-control' id="free" name="free">
                     <option value="empty">No, show me all patterns.</option>
                     <option value="yes">Yes, show me only free patterns.</option>
                 </select>
             </fieldset>
             <fieldset class="form-group">
-                <legend>Would you like to restrict your search to patterns available online?</legend>
+                <legend>Would you like to restrict your search to patterns <strong>available online</strong>?</legend>
                 <select class='form-control' id="online" name="online">
                     <option value="empty">No, show me all patterns.</option>
                     <option value="yes">Yes, show me only patterns available online.</option>
                 </select>
             </fieldset>
             <fieldset class="form-group">
-                <legend>Would you like to restrict your search a certain category?</legend>
+                <legend>Would you like to restrict your search to a certain <strong>category</strong>?</legend>
                 <select class='form-control' id="pc" name="pc">
                     <option value="empty">No preference</option>
                     <option value="clothing">Clothing</option>
@@ -72,7 +72,7 @@
                     <option value="pet%7Cpattern-component%7Cmedical">Other</option>   
                 </select>
             </fieldset>
-            <div class="margin-1">
+            <div>
                 <input class="btn btn-primary btn-lg btn-block" style="margin-top:2rem" type="submit" value="Submit">
             </div>
         </form>

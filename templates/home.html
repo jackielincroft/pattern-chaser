@@ -13,12 +13,14 @@
         </div>
         <div class="card-body">
         <ol>
-            <li class="text-secondary lead">Set your preferences for what kind of patterns you're open to – your preferred craft, yarn weight, yardage, etc.  You can make as many or as few restrictions as you'd like, although we recommend restricting 2-3 things.</li>
-            <li class="text-warning lead">Next, you'll be shown a series of random patterns that fit your preferrences.  For each pattern, vote on whether or not you like the pattern.  This data is what our algorithm will use to find your perfect pattern recommendations!</li>
-            <li class="text-info lead">Finally, wait for a moment while we find you a set of patterns that we think you'll love!  Each pattern will be linked to it's corresponding Ravelry page for more information.  Feel free to refresh to get additional recommended results!</li>
+            <li class="text-secondary lead">Set your <strong>preferences</strong> for what kind of patterns you're open to – your preferred craft, yarn weight, yardage, etc.  You can make as many or as few restrictions as you'd like, although we recommend restricting 2-3 things.</li>
+            <li class="text-warning lead">Next, you'll be shown a series of random patterns that fit your preferences.  For each pattern, <strong>vote</strong> on whether or not you like the pattern.  This data is what our algorithm will use to find your perfect pattern recommendations!</li>
+            <li class="text-info lead">Finally, wait for a moment while we find your pattern <strong>results</strong> we think you'll love!  Each pattern will be linked to it's corresponding Ravelry page for more information.  Feel free to refresh to get additional recommended results!</li>
         </ol>
     </div>
     </div>
-    <input class="btn btn-primary btn-lg btn-block" style="margin-top:2rem" type="submit" value="Find Patterns!">
+    <button class="btn btn-primary btn-lg btn-block" style="margin-top:2rem">
+        <a class="btn btn-primary btn-lg btn-block" href="{{ url_for('preferences') }}">Find Patterns!</a>
+    </button>
 </div>
 {% endblock %}

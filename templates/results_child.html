@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from 'pattern-card.html' import card %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1 class="display-5">Your Recommended Patterns</h1>
+    {% for pattern, score in patterns.items() %} 
+        {{ card(pattern) }}
+        <!-- delete score later -->
+        <p>likeability score: {{ score }}</p>
+    {%endfor%}
+</div>
+{% endblock %}

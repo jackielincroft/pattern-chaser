@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-.question {
-    background-color: rgb(230, 230, 250);
-    color: black;
-    border: 0.1rem solid black;
-    padding: 1rem;
-    margin: 1rem;
-}
-
-.dropdown-menu {
-    background-color: white;
-}
-
 .main-content {
     margin: 2rem;
 }
@@ -35,14 +23,6 @@
 img.resize {
     width: 300px;
     height: auto; 
-}
-
-.margin-1 {
-    margin: 1rem;
-}
-
-.margin-2 {
-    margin: 20px;
 }
 
 li {
