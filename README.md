@@ -1,12 +1,6 @@
-// CLIPBOARD:
-- not yet functional toggle for knit/crochet:
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-        <input type="radio" id="option1" name="options" autocomplete="off" checked>
-        Knitting
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" id="option2" name="options" autocomplete="off" >
-        Crochet
-    </label>
-</div>
+# pattern-chaser
+ML Knit and Crochet Pattern Recommender using Ravelry API
+
+Personal project created with @hannahfriedman during quarantine, summer 2020.  Inspired by Stitch Fix and similar style prediction algorithms, we designed a web application that allows users to vote on 20 random patterns fitting their specified qualifications, which then allows us to predict patterns that we think they'll enjoy.
+
+This application was built using Python and Flask, and utilizes the Ravelry API for knit and crochet patterns.
